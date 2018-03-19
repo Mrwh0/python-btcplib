@@ -19,14 +19,14 @@ if sys.version_info.major < 3:
     sys.exit(1)
 
 import hashlib
-import zcash.rpc
+import btcp.rpc
 import sys
 
-from zcash import params
-from zcash.core import *
-from zcash.core.script import *
+from btcp import params
+from btcp.core import *
+from btcp.core.script import *
 
-proxy = zcash.rpc.Proxy()
+proxy = btcp.rpc.Proxy()
 
 assert len(sys.argv) > 1
 

@@ -22,7 +22,7 @@
 #  openssl req -new -x509 -nodes -sha256 -days 3650 -key server.pem > server.cert
 #  The prompts are optional, you can just hit enter
 
-# Verify that your zcash.conf exists in the above directory and contains the following lines:
+# Verify that your btcprivate.conf exists in the above directory and contains the following lines:
 # server=1
 # rpcssl=1
 # rpcuser=CHANGETHIS
@@ -31,7 +31,7 @@
 # rpcsslprivatekeyfile=server.pem
 # rpcsslcertificatechainfile=server.cert
 
-import zcash.rpc
+import btcp.rpc
 
-proxy_connection = zcash.rpc.Proxy()
+proxy_connection = btcp.rpc.Proxy()
 print(proxy_connection.getnewaddress())

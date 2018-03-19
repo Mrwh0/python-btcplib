@@ -17,7 +17,7 @@ Contents:
    :maxdepth: 2
 
    bitcoin
-   zcash.core
+   btcp.core
 
 
 Indices and tables

@@ -20,11 +20,11 @@ if sys.version_info.major < 3:
 
 import hashlib
 
-from zcash import SelectParams
-from zcash.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160
-from zcash.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL
-from zcash.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
-from zcash.wallet import CBitcoinAddress, CBitcoinSecret
+from btcp import SelectParams
+from btcp.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160
+from btcp.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL
+from btcp.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
+from btcp.wallet import CBitcoinAddress, CBitcoinSecret
 
 SelectParams('testnet')
 
@@ -38,13 +38,13 @@ txin_redeemScript = CScript([seckey.pub, OP_CHECKSIG])
 print(b2x(txin_redeemScript))
 
 # Create the magic P2SH scriptPubKey format from that redeemScript. You should
-# look at the CScript.to_p2sh_scriptPubKey() function in zcash.core.script to
+# look at the CScript.to_p2sh_scriptPubKey() function in btcp.core.script to
 # understand what's happening, as well as read BIP16:
 # https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
 txin_scriptPubKey = txin_redeemScript.to_p2sh_scriptPubKey()
 print('scriptPubKey:', str(txin_scriptPubKey))
 
-# Convert the P2SH scriptPubKey to a base58 zcash address and print it.
+# Convert the P2SH scriptPubKey to a base58 btcp address and print it.
 # You'll need to send some funds to it to create a txout to spend.
 txin_p2sh_address = CBitcoinAddress.from_scriptPubKey(txin_scriptPubKey)
 print('Pay to:',str(txin_p2sh_address))

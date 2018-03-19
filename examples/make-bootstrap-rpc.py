@@ -19,7 +19,7 @@ if sys.version_info.major < 3:
     sys.exit(1)
 
 import bitcoin
-import zcash.rpc
+import btcp.rpc
 
 import struct
 import sys
@@ -32,13 +32,13 @@ try:
     n = int(sys.argv[1])
 
     if len(sys.argv) == 3:
-        zcash.SelectParams(sys.argv[2])
+        btcp.SelectParams(sys.argv[2])
 except Exception as ex:
     print('Usage: %s <block-height> [network=(mainnet|testnet|regtest)] > bootstrap.dat' % sys.argv[0], file=sys.stderr)
     sys.exit(1)
 
 
-proxy = zcash.rpc.Proxy()
+proxy = btcp.rpc.Proxy()
 
 total_bytes = 0
 start_time = time.time()
@@ -55,6 +55,6 @@ for i in range(n + 1):
              i, len(block_bytes)),
           file=sys.stderr)
 
-    fd.write(zcash.params.MESSAGE_START)
+    fd.write(btcp.params.MESSAGE_START)
     fd.write(struct.pack('<i', len(block_bytes)))
     fd.write(block_bytes)

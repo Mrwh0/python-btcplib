@@ -20,11 +20,11 @@ if sys.version_info.major < 3:
 
 import hashlib
 
-from zcash import SelectParams
-from zcash.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160
-from zcash.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL
-from zcash.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
-from zcash.wallet import CBitcoinAddress, CBitcoinSecret
+from btcp import SelectParams
+from btcp.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160
+from btcp.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL
+from btcp.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
+from btcp.wallet import CBitcoinAddress, CBitcoinSecret
 
 SelectParams('mainnet')
 

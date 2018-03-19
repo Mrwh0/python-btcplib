@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
 
-# Copyright (C) 2017 the python-zcashlib developers
+# Copyright (C) 2017 the python-btcplib developers
 
 import sys
 if sys.version_info.major < 3:
     sys.stderr.write('Sorry, Python 3.x required by this example.\n')
     sys.exit(1)
 
-import zcash
-import zcash.rpc
-from zcash import SelectParams
-from zcash.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160
-from zcash.core.script import CScript, OP_DUP, OP_HASH160, OP_SHA256, OP_EQUAL, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGHASH_ANYONECANPAY
-from zcash.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
-from zcash.wallet import CBitcoinAddress, CBitcoinSecret
+import btcp
+import btcp.rpc
+from btcp import SelectParams
+from btcp.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160
+from btcp.core.script import CScript, OP_DUP, OP_HASH160, OP_SHA256, OP_EQUAL, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGHASH_ANYONECANPAY
+from btcp.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
+from btcp.wallet import CBitcoinAddress, CBitcoinSecret
 
 SelectParams('regtest')
 
 import hashlib
 
-proxy = zcash.rpc.Proxy()
+proxy = btcp.rpc.Proxy()
 info = proxy.getinfo()
 print("INFO FROM PROXY: ", info)
 
@@ -37,7 +37,7 @@ print(b2x(txin_redeemScript))
 # Create the magic P2SH scriptPubKey format from redeemScript
 txin_scriptPubKey = txin_redeemScript.to_p2sh_scriptPubKey()
 
-# Convert the P2SH scriptPubKey to a base58 Zcash address
+# Convert the P2SH scriptPubKey to a base58 btcp address
 txin_p2sh_address = CBitcoinAddress.from_scriptPubKey(txin_scriptPubKey)
 print('Pay to:',str(txin_p2sh_address))
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 import socket, time, bitcoin
-from zcash.messages import msg_version, msg_verack, msg_addr
-from zcash.net import CAddress
+from btcp.messages import msg_version, msg_verack, msg_addr
+from btcp.net import CAddress
 
 
 PORT = 18333
 
-zcash.SelectParams('testnet') 
+btcp.SelectParams('testnet') 
 
 def version_pkt(client_ip, server_ip):
     msg = msg_version()

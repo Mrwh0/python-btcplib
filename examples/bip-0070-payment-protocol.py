@@ -24,10 +24,10 @@ import payments_pb2
 o = payments_pb2
 
 import bitcoin
-#zcash.SelectParams('testnet')
-from zcash.wallet import CBitcoinAddress
-from zcash.core.script import CScript
-from zcash.rpc import Proxy
+#btcp.SelectParams('testnet')
+from btcp.wallet import CBitcoinAddress
+from btcp.core.script import CScript
+from btcp.rpc import Proxy
 
 from time import time
 
@@ -38,7 +38,7 @@ def payment_request():
     btc = bc.getnewaddress()
 
 #   Setting the 'amount' field to 0 (zero) should prompt the user to enter
-#   the amount for us but a bug in zcash core qt version 0.9.1 (at time of
+#   the amount for us but a bug in btcp core qt version 0.9.1 (at time of
 #   writing) wrongly informs us that the value is too small and aborts.
 #   https://github.com/bitcoin/bitcoin/issues/3095
 #   Also there can be no leading 0's (zeros).

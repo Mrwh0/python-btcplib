@@ -1,4 +1,4 @@
-zcash.core
+btcp.core
 ============
 
 Everything consensus critical is found in the core subpackage.
@@ -6,25 +6,25 @@ Everything consensus critical is found in the core subpackage.
 :mod:`core`
 -----------
 
-.. automodule:: zcash.core
+.. automodule:: btcp.core
 
 :mod:`key`
 ----------
 
-.. automodule:: zcash.core.key
+.. automodule:: btcp.core.key
 
 :mod:`script`
 -------------
 
-.. automodule:: zcash.core.script
+.. automodule:: btcp.core.script
 
 :mod:`scripteval`
 -----------------
 
-.. automodule:: zcash.core.scripteval
+.. automodule:: btcp.core.scripteval
 
 :mod:`serialize`
 ----------------
 
-.. automodule:: zcash.core.serialize
+.. automodule:: btcp.core.serialize
 
