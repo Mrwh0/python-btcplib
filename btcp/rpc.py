@@ -450,14 +450,14 @@ class Proxy(BaseProxy):
         If account is not None, it is added to the address book so payments
         received with the address will be credited to account.
         """
-        r = None
+        r  = None
         if account is not None:
             r = self._call('getnewaddress', account)
         else:
             r = self._call('getnewaddress')
-
-        return CBitcoinAddress(r)
-
+        #print (r)
+        #return CBitcoinAddress(r)
+       
     def getrawchangeaddress(self):
         """Returns a new btcp address, for receiving change.
 
