@@ -456,7 +456,7 @@ class Proxy(BaseProxy):
         else:
             r = self._call('getnewaddress')
         #print (r)
-        #return CBitcoinAddress(r)
+        return CBitcoinAddress(r)
        
     def getrawchangeaddress(self):
         """Returns a new btcp address, for receiving change.
