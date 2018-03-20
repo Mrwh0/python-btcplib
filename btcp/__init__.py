@@ -19,44 +19,44 @@ import btcp.core
 __version__ = '0.7.1-SNAPSHOT'
 
 class MainParams(btcp.core.CoreMainParams):
-    MESSAGE_START = b'\x24\xe9\x27\x64'
-    DEFAULT_PORT = 8233
-    RPC_PORT = 8232
-    DNS_SEEDS = (('z.cash', 'dnsseed.z.cash'),
-                 ('str4d.xyz', 'dnsseed.str4d.xyz'),
-                 ('znodes.org', 'dnsseed.znodes.org'))
+    MESSAGE_START = b'\xa8\xea\xa2\xcd'
+    DEFAULT_PORT = 7933
+    RPC_PORT = 7932
+
+    DNS_SEEDS = ('btcprivate.org', 'dnsseed.btcpprivate.org')
     # PUBKEY_ADDR: first 2 characters, when base58 encoded, are "t1"
     # SCRIPT_ADDR: first 2 characters, when base58 encoded, are "t3"
     # SECRET_KEY: the first character, when base58 encoded, is "5" or "K" or "L" (as in Bitcoin)
     # ZCPAYMENT_ADDRRESS: guarantees the first 2 characters, when base58 encoded, are "zc"
-    BASE58_PREFIXES = {'PUBKEY_ADDR':b'\x1C\xB8',
-                       'SCRIPT_ADDR':b'\x1C\xBD',
+    BASE58_PREFIXES = {'PUBKEY_ADDR':b'\x13\x25',
+                       'SCRIPT_ADDR':b'\x13\xAF',
                        'SECRET_KEY' :128,
-                       'ZCPAYMENT_ADDRRESS': b'\x16\x9A'}
+                       'ZCPAYMENT_ADDRRESS': b'\x16\xA8'}
 
 class TestNetParams(btcp.core.CoreTestNetParams):
-    MESSAGE_START = b'\xfa\x1a\xf9\xbf'
-    DEFAULT_PORT = 18233
-    RPC_PORT = 18232
-    DNS_SEEDS = (('z.cash', 'dnsseed.testnet.z.cash'))
+    MESSAGE_START = b'\xf6\x1b\xf6\xd6'
+    DEFAULT_PORT = 17933
+    RPC_PORT = 17932
+    #no testnet dnsseed YET! WOP!
+    DNS_SEEDS = ()
     # PUBKEY_ADDR: first 2 characters, when base58 encoded, are "tm"
     # SCRIPT_ADDR: first 2 characters, when base58 encoded, are "t2"
     # SECRET_KEY: the first character, when base58 encoded, is "9" or "c" (as in Bitcoin)
     # ZCPAYMENT_ADDRRESS: guarantees the first 2 characters, when base58 encoded, are "zt"
-    BASE58_PREFIXES = {'PUBKEY_ADDR':b'\x1D\x25',
-                       'SCRIPT_ADDR':b'\x1C\xBA',
+    BASE58_PREFIXES = {'PUBKEY_ADDR':b'\x19\x57',
+                       'SCRIPT_ADDR':b'\x19\xE0',
                        'SECRET_KEY' :239, # b'\xEF',
-                       'ZCPAYMENT_ADDRRESS': b'\x16\xB6'}
+                       'ZCPAYMENT_ADDRRESS': b'\x16\xC0'}
 
 class RegTestParams(btcp.core.CoreRegTestParams):
-    MESSAGE_START = b'\xaa\xea\x3f\x5f'
-    DEFAULT_PORT = 18444
-    RPC_PORT = 18232
+    MESSAGE_START = b'\xaa\xe8\x3f\x5f'
+    DEFAULT_PORT = 17944
+    RPC_PORT = 17943
     DNS_SEEDS = ()
-    BASE58_PREFIXES = {'PUBKEY_ADDR':b'\x1D\x25',
-                       'SCRIPT_ADDR':b'\x1C\xBA',
+    BASE58_PREFIXES = {'PUBKEY_ADDR':b'\x19\x57',
+                       'SCRIPT_ADDR':b'\x19\xE0',
                        'SECRET_KEY' :239, # b'\xEF',
-                       'ZCPAYMENT_ADDRRESS': b'\x16\xB6'}
+                       'ZCPAYMENT_ADDRRESS': b'\x16\xC0'}
 
 """Master global setting for what chain params we're using.
 
