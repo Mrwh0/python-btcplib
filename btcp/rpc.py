@@ -623,14 +623,16 @@ class Proxy(BaseProxy):
         '''Decode a hex-encoded script.'''
         return self._call('decodescript', hex)
 
-    def sendmany(self, fromaccount, payments, minconf=1, comment='', subtractfeefromamount=[]):
+    def sendmany(self, fromaccount, payments, subtractfeefromamount, minconf=1, comment=''):
         """Send amount to given addresses.
 
         payments - dict with {address: amount}
         """
         json_payments = {str(addr):float(amount)/COIN
                          for addr, amount in payments.items()}
-        r = self._call('sendmany', fromaccount, json_payments, minconf, comment, subtractfeefromamount)
+        subtractfeefromamount_ = [str(addr)
+                         for addr in subtractfeefromamount]
+        r = self._call('sendmany', fromaccount, json_payments, minconf, comment, subtractfeefromamount_)
         return lx(r)
 
     def sendtoaddress(self, addr, amount, comment='', commentto='', subtractfeefromamount=False):
