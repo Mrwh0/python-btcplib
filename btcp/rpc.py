@@ -624,15 +624,21 @@ class Proxy(BaseProxy):
         return self._call('decodescript', hex)
 
     def sendmany(self, fromaccount, payments, subtractfeefromamount, minconf=1, comment=''):
+                                              #subtractfeefromamount = [] if no accounts will set  to handle fees. 
         """Send amount to given addresses.
 
         payments - dict with {address: amount}
+        exaple with subtractfeefromamount 
+        s = connb.sendmany(userd,{"b1Dy4M5MrRoQfmHS92iUqvyyjDftpRUbhd7":10223000,"b1PVbTnvyfYMTHHEzgPaJ4J6jNCgHXP6Vt5":20000},
+                         {"b1PVbTnvyfYMTHHEzgPaJ4J6jNCgHXP6Vt5","b1PVbTnvyfYMTHHEzgPaJ4J6jNCgHXP6Vt5"})
+
         """
         json_payments = {str(addr):float(amount)/COIN
                          for addr, amount in payments.items()}
-        subtractfeefromamount_ = [str(addr)
-                         for addr in subtractfeefromamount]
-        r = self._call('sendmany', fromaccount, json_payments, minconf, comment, subtractfeefromamount_)
+        
+        subtractfeefromamount_ = [str(addr) #comment if  #subtractfeefromamount = []
+                         for addr in subtractfeefromamount]  #comment if  #subtractfeefromamount = []
+        r = self._call('sendmany', fromaccount, json_payments, minconf, comment, subtractfeefromamount_) #change subtractfeefromamount_ to subtractfeefromamount 
         return lx(r)
 
     def sendtoaddress(self, addr, amount, comment='', commentto='', subtractfeefromamount=False):
