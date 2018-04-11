@@ -1,3 +1,4 @@
+
 # Copyright (C) 2007 Jan-Klaas Kollhof
 # Copyright (C) 2011-2015 The python-bitcoinlib developers
 # Copyright (C) 2017 The python-btcplib developers
@@ -76,13 +77,13 @@ class JSONRPCError(Exception):
 
     def __new__(cls, rpc_error):
         assert cls is JSONRPCError
-        cls = JSONRPCError.SUBCLS_BY_CODE.get(rpc_error['code'], cls)
+        cls = JSONRPCError.SUBCLS_BY_CODE.get(rpc_error["code"], cls)
 
         self = Exception.__new__(cls)
 
         super(JSONRPCError, self).__init__(
-            'msg: %r  code: %r' %
-            (rpc_error['message'], rpc_error['code']))
+            "msg: %r  code: %r" %
+            (rpc_error["message"], rpc_error["code"]))
         self.error = rpc_error
 
         return self
@@ -202,7 +203,7 @@ class BaseProxy(object):
             raise JSONRPCError(response['error'])
         elif 'result' not in response:
             raise JSONRPCError({
-                'code': -343, 'message': 'missing JSON-RPC result'})
+                "code": -343, "message": "missing JSON-RPC result"})
         else:
             return response['result']
 
